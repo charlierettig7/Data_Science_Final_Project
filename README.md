@@ -1,8 +1,19 @@
-# DS_Final_Project
+# Data_Science_Final_Project
 Data Science in the Life Sciences - Final Project
 
+Welcome to the final project Group 3 in Data Science in the Life Sciences! This repository contains the entire code base for our project, which we have _unofficially_ named scTherapy+. 
+
+**Inspiration**
+Tumor heterogeneity represents a major challenge in the development of both general and targeted treatment of malignant cancers. Features such as the tumoral microenvironment and intertumoral differential gene expression (including evolutionary differential expression) result in innumerable effective variations in tumoral profiles, blurring the identification of viable treatment targets, especially those that aim to be patient-specific. While the original manuscript by Ianevski et al. does lay out methods for explicitly dealing with tumoral heterogeneity, we believe that they left out potentially informative dimensions of integratable data (e.g., pathway analysis and variant calling) that could not only improve confidence in tumor classification and ultimate model predictions, but also provide a deeper level of biological interpretability – something that the original manuscript lacks. To the latter point, we believe that for this type of prediction task, biological interpretation must be clear to translate any conclusions into follow-up development of clinical treatments. 
+
+Our method seeks to improve on the scTherapy (hence the name scTherapy+), a method developed by Ianevski et al. (2024), which uses scRNA-seq data from patient tumor samples to predict optimal patient-specific drug/dose combinations for cancer treatment. In this project, we attempt to both replicate their original method and improve its performance by integrating variant-calling and comparing different modeling frameworks. We also take the method a step further by annotating the results with pathway enrichment analysis in hopes of providing biologically sound interpretability of our models. 
+
+Concretely, our method leverages scRNA-seq data, from which we obtain differential gene expression data and identification of transcriptome-wide SNPs, along with the chemical structures of cancer drugs, to predict post-treatment cell viability (as a percentage). 
+
+The original manuscript from Ianevski et al. can be found at this link: https://www.nature.com/articles/s41467-024-52980-5#Sec8 
+
 **Overview**
-This repository contains all model training and prediction scripts. All data used in training and validation, as well as results from the training and prediction processes have already been obtained and saved in this repository. Thus, any of the scripts can be run with the current contents of this repository without depending on running other scripts first. 
+All data used in training and validation, as well as results from the training and prediction processes have already been obtained and saved in this repository. Thus, any of the scripts can be run with the current contents of this repository without depending on running other scripts first. This is unfortunately not the case for scripts in patient processing and variant processing since some files are too large.
 
 *NOTE: All scripts were run on FU's HPC cluster (curta.zedat.fu-berlin.de), and bash scripts contained in this repository are configured for this environment. 
 
