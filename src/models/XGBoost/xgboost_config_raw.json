@@ -1,0 +1,15 @@
+{
+    "enable_categorical": true,
+    "verbosity": 1,
+    "use_rmm": false,
+    "booster": "gbtree",
+    "objective": "reg:squarederror",
+    "eval_metric": "rmse",
+    "validate_parameters": true,
+    "learning_rate": 0.1,
+    "min_split_loss": 0,
+    "max_depth": 3,
+    "subsample": 0.7,
+    "gamma": 0.015,
+    "min_child_weight": 4
+}
