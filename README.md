@@ -30,6 +30,8 @@ This repository contains all model training and prediction scripts. All data use
 
 The src/predictions/tahoe_predict.py script can be run directly to generate predictions on the Tahoe dataset, as all files and results that this script depends on are already in the repository. However, if you wish to go through the entire workflow, you may follow the steps below. These steps take you through an example workflow for training lightGBM on data containing normalized numerical columns _with_ variants data and manual tuning (no grid search). 
 
+*NOTE: You must unzip results.zip before running any code!
+
 The models that are used to make predictions on the Tahoe dataset are:
 - LightGBM with variants and normalized numeric columns: src/models/lightGBM/lightGBM_vars_scaled_notune.py
 - LightGBM without variants and normalized numeric columns: src/models/lightGBM/lightGBM_raw_scaled_notune.py
