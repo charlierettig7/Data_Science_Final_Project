@@ -67,64 +67,64 @@ _Starting with preprocessed data in the _data_ directory and with _ds_final_proj
 
 ├── bash_scripts
 ├── GSEA
-│ ├── GSEA.R
-│ ├── lgbm_raw.zip
-│ ├── lgbm_vars.zip
-│ ├── xgboost_raw.zip
-│ ├── xgboost_vars.zip
+│   ├── GSEA.R
+│   ├── lgbm_raw.zip
+│   ├── lgbm_vars.zip
+│   ├── xgboost_raw.zip
+│   ├── xgboost_vars.zip
 ├── Process_patient_data
-│ ├── data
-│ │ ├── 17_HMM_predHMMi6.rand_trees.hmm_mode-subclusters.patient5.cell_groupings
-│ │ ├── 17_HMM_predHMMi6.rand_trees.hmm_mode-subclusters.patient6.cell_groupings
-│ │ ├── 17_HMM_predHMMi6.rand_trees.hmm_mode-subclusters.patient6.cell_groupings
-│ │ ├── aggregated_muts_12.csv
-│ │ ├── aggregated_muts_5.csv
-│ │ ├── aggregated_muts_6.csv
-│ │ ├── counts_patient5.csv
-│ │ ├── counts_patient6.csv (too large - derived through process_patient_expression.R)
-│ │ ├── gene_expression_processed_pat5.csv
-│ │ ├── gene_expression_processed_pat6.csv
-│ │ ├── mutation_pat12.csv
-│ │ ├── mutation_pat5.csv
-│ │ ├── mutation_pat6.csv
-│ │ ├── patient12.RDS
-│ │ ├── patient5.RDS
-│ │ ├── patient6.RDS
-│ │ ├── pat5_to_predict.parquet
-│ │ ├── pat6_to_predict.parquet
-│ │ ├── row_to_subclone_pat5.parquet
-│ │ ├── row_to_subclone_pat6.parquet
-│ │ ├── SRR30720406_.vcf
-│ │ ├── SRR30720407_.vcf (too large - scAllele)
-│ │ ├── SRR30720408_.vcf
-│ │ └── .DS_Store
-│ ├── filter_vcf.R
-│ ├── pat_12_pseudobulk.ipynb
-│ ├── pat_5_pseudobulk.ipynb
-│ ├── pat_6_pseudobulk.ipynb
-│ ├── process_patient_expression.R
-│ ├── plots
-│ │ ├── Rplots_6.pdf
-│ │ ├── Rplots_12.pdf
-│ │ ├── patient12_UMAP.png
-│ │ ├── patient12_elbowplot.png
-│ │ ├── patient5_UMAP.png
-│ │ ├── patient5_elbowplot.png
-│ │ ├── patient6_UMAP.png
-│ │ ├── patient6_elbowplot.png
-│ │ └── patient_5_Rplots.pdf
-│ └── scTherapy_plus.R
+│   ├── data
+│   │   ├── 17_HMM_predHMMi6.rand_trees.hmm_mode-subclusters.patient5.cell_groupings
+│   │   ├── 17_HMM_predHMMi6.rand_trees.hmm_mode-subclusters.patient6.cell_groupings
+│   │   ├── aggregated_muts_12.csv
+│   │   ├── aggregated_muts_5.csv
+│   │   ├── aggregated_muts_6.csv
+│   │   ├── counts_patient5.csv
+│   │   ├── counts_patient6.csv         # (too large - derived through process_patient_expression.R)
+│   │   ├── gene_expression_processed_pat5.csv
+│   │   ├── gene_expression_processed_pat6.csv
+│   │   ├── mutation_pat12.csv
+│   │   ├── mutation_pat5.csv
+│   │   ├── mutation_pat6.csv
+│   │   ├── patient12.RDS
+│   │   ├── patient5.RDS
+│   │   ├── patient6.RDS
+│   │   ├── pat5_to_predict.parquet
+│   │   ├── pat6_to_predict.parquet
+│   │   ├── row_to_subclone_pat5.parquet
+│   │   ├── row_to_subclone_pat6.parquet
+│   │   ├── SRR30720406_.vcf
+│   │   ├── SRR30720407_.vcf            # (too large - scAllele)
+│   │   ├── SRR30720408_.vcf
+│   │   └── .DS_Store
+│   ├── filter_vcf.R
+│   ├── pat_12_pseudobulk.ipynb
+│   ├── pat_5_pseudobulk.ipynb
+│   ├── pat_6_pseudobulk.ipynb
+│   ├── process_patient_expression.R
+│   ├── plots
+│   │   ├── Rplots_6.pdf
+│   │   ├── Rplots_12.pdf
+│   │   ├── patient12_UMAP.png
+│   │   ├── patient12_elbowplot.png
+│   │   ├── patient5_UMAP.png
+│   │   ├── patient5_elbowplot.png
+│   │   ├── patient6_UMAP.png
+│   │   ├── patient6_elbowplot.png
+│   │   └── patient_5_Rplots.pdf
+│   └── scTherapy_plus.R
 ├── Preprocess_Variants
-│ ├── cell_annotate.R
-│ ├── create_mutation_presence_cols_np.py
-│ ├── data
-│ │ ├── Model.csv
-│ │ ├── OmicsSomaticMutations.csv (too large - source depmap)
-│ │ └── mutations_cellosaurus_full.csv (too large - derived using bash_scripts/annotate_cell_ids.sh)
-│ ├── merge_variants_into_lincs.ipynb
-│ ├── mutation_data.R
-│ ├── query_tahoe_nonoverlapping.ipynb
-│ └── query_tahoe_overlapping.ipynb
+│   ├── cell_annotate.R
+│   ├── create_mutation_presence_cols_np.py
+│   ├── data
+│   │   ├── Model.csv
+│   │   ├── OmicsSomaticMutations.csv     # (too large - source depmap)
+│   │   └── mutations_cellosaurus_full.csv # (too large - derived using bash_scripts/annotate_cell_ids.sh)
+│   ├── merge_variants_into_lincs.ipynb
+│   ├── mutation_data.R
+│   ├── query_tahoe_nonoverlapping.ipynb
+│   └── query_tahoe_overlapping.ipynb
+
 
 ---
 
