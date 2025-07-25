@@ -146,3 +146,5 @@ Bash Scripts were used to run various tasks on the FU servers. These scripts are
 - `query_tahoe_...` does the same for tahoe
 - `mutation_data.R` contains some EDA and how we came up with cell_annotate.R
 - We used T2T from UCSC as a reference, in addition to the RefSeq Annotation file - we did not upload these files since they are too large for github.
+
+**Note:** The remaining parts of this project can be found in the other pranches of this project, namely Data Processing and EDA.
