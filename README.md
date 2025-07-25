@@ -37,7 +37,7 @@ The models that are used to make predictions on the Tahoe dataset are:
 - Ridge regression with variants and normalized numeric columns: src/models/linear/linear_vars_tuned.py
 - Ridge regression without variants and normalized numeric columns: src/models/linear/linear_raw_tuned.py
 
-_Starting with preprocessed data in the _data_ directory and with _ds_final_project_ as your working directory:_
+_Starting with preprocessed data in the _data_ directory and with the main repo directory as your working directory:_
 1. Model training: In your terminal (CLI), run the bash script corresponding to the model you wish to train (bash names match Python script names): sbatch bash/lightGBM_vars_scaled_notune.sh
 2. View the results (saved model files, evaluation metrics, feature importances, and plots) in results/results_vars/lightGBM_results_vars
 3. Prediction on external (Tahoe) dataset: In your terminal (CLI), run tahoe_predict.sh: sbatch bash/tahoe_predict.sh
