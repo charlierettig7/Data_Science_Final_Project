@@ -12,13 +12,17 @@ Concretely, our method leverages scRNA-seq data, from which we obtain differenti
 
 The original manuscript from Ianevski et al. can be found at this link: https://www.nature.com/articles/s41467-024-52980-5#Sec8 
 
+The read me is split up by how we divided tasks. We apologize for any inconvenience this causes.
+## Modelling: 
+
 **Overview**
-All data used in training and validation, as well as results from the training and prediction processes have already been obtained and saved in this repository. Thus, any of the scripts can be run with the current contents of this repository without depending on running other scripts first. This is unfortunately not the case for scripts in patient processing and variant processing since some files are too large.
+
+All data used in training and validation, as well as results from the training and prediction processes have already been obtained and saved in this repository. Thus, any of the scripts can be run with the current contents of this repository without depending on running other scripts first.
 
 *NOTE: All scripts were run on FU's HPC cluster (curta.zedat.fu-berlin.de), and bash scripts contained in this repository are configured for this environment. 
 
 **File structure and contents:** 
-- Main directory: ds_final_project
+- Main directory:
   - bash: Bash scripts for running all Python scripts. The names of the bash scripts match the names of their corresponding Python scripts (e.g., tahoe_predict.sh runs tahoe_predict.py). All bash scripts assume access to curta.zedat.fu-berlin.de. 
   - data: preprocessed data used for training and external validation
     - lincs_formatted_normalized_cellosaurus.parquet: preprocessed LINCS dataset _with_ variant-calling data for training
@@ -57,3 +61,103 @@ _Starting with preprocessed data in the _data_ directory and with _ds_final_proj
 4. View results and CSVs containing predictions in results/tahoe_predictions
 
 **Congratulations! You have successfully trained a LightGBM model and made predictions on an external dataset.**
+
+## Patient Data and Variants
+## Folder Structure
+
+├── bash_scripts
+├── GSEA
+│ ├── GSEA.R
+│ ├── lgbm_raw.zip
+│ ├── lgbm_vars.zip
+│ ├── xgboost_raw.zip
+│ ├── xgboost_vars.zip
+├── Process_patient_data
+│ ├── data
+│ │ ├── 17_HMM_predHMMi6.rand_trees.hmm_mode-subclusters.patient5.cell_groupings
+│ │ ├── 17_HMM_predHMMi6.rand_trees.hmm_mode-subclusters.patient6.cell_groupings
+│ │ ├── 17_HMM_predHMMi6.rand_trees.hmm_mode-subclusters.patient6.cell_groupings
+│ │ ├── aggregated_muts_12.csv
+│ │ ├── aggregated_muts_5.csv
+│ │ ├── aggregated_muts_6.csv
+│ │ ├── counts_patient5.csv
+│ │ ├── counts_patient6.csv (too large - derived through process_patient_expression.R)
+│ │ ├── gene_expression_processed_pat5.csv
+│ │ ├── gene_expression_processed_pat6.csv
+│ │ ├── mutation_pat12.csv
+│ │ ├── mutation_pat5.csv
+│ │ ├── mutation_pat6.csv
+│ │ ├── patient12.RDS
+│ │ ├── patient5.RDS
+│ │ ├── patient6.RDS
+│ │ ├── pat5_to_predict.parquet
+│ │ ├── pat6_to_predict.parquet
+│ │ ├── row_to_subclone_pat5.parquet
+│ │ ├── row_to_subclone_pat6.parquet
+│ │ ├── SRR30720406_.vcf
+│ │ ├── SRR30720407_.vcf (too large - scAllele)
+│ │ ├── SRR30720408_.vcf
+│ │ └── .DS_Store
+│ ├── filter_vcf.R
+│ ├── pat_12_pseudobulk.ipynb
+│ ├── pat_5_pseudobulk.ipynb
+│ ├── pat_6_pseudobulk.ipynb
+│ ├── process_patient_expression.R
+│ ├── plots
+│ │ ├── Rplots_6.pdf
+│ │ ├── Rplots_12.pdf
+│ │ ├── patient12_UMAP.png
+│ │ ├── patient12_elbowplot.png
+│ │ ├── patient5_UMAP.png
+│ │ ├── patient5_elbowplot.png
+│ │ ├── patient6_UMAP.png
+│ │ ├── patient6_elbowplot.png
+│ │ └── patient_5_Rplots.pdf
+│ └── scTherapy_plus.R
+├── Preprocess_Variants
+│ ├── cell_annotate.R
+│ ├── create_mutation_presence_cols_np.py
+│ ├── data
+│ │ ├── Model.csv
+│ │ ├── OmicsSomaticMutations.csv (too large - source depmap)
+│ │ └── mutations_cellosaurus_full.csv (too large - derived using bash_scripts/annotate_cell_ids.sh)
+│ ├── merge_variants_into_lincs.ipynb
+│ ├── mutation_data.R
+│ ├── query_tahoe_nonoverlapping.ipynb
+│ └── query_tahoe_overlapping.ipynb
+
+---
+
+## Usage
+
+### Bash Scripts
+
+Bash Scripts were used to run various tasks on the FU servers. These scripts are saved in this folder
+
+### GSEA
+
+- Scripts related to Gene Set Enrichment Analysis are located in the `GSEA/` folder.
+- `GSEA.R` performs enrichment analysis and visualization using preprocessed data.
+- The zip files contain both plots and data on the 10 best and 10 worst predictions for each of the respective model. The R file can be run as is, if the paths are correct.
+
+### Patient Data Processing
+
+- The `Process_patient_data/` directory contains notebooks (`*.ipynb`) and scripts to preprocess and analyze patient-specific data.
+- `filter_vcf.R` filters the outputs of scAllele
+- `process_patient_expression.R` transforms the expression data in a way to allow for pseudobulking using the respective .ipynb notebooks
+- Data files and intermediate files are in `Process_patient_data/data`.
+    - `.vcf` contain scAllele output
+    - `patX_to_predict.parquet` contain the processed patient data, including expression and gene-level variants to predict on
+    - `.cell_groupings` are scTherapy output that indicate which subclone each cell_id belongs to
+- Plot outputs can be found under `Process_patient_data/plots`. These are created through scTherapy
+- Note: we weren't able to fully process patient 12 since there was an ongoing issue with I/O Locks on the necessary files on the server. While we did solve this problem in time, there did not remain enough time to complete the subsequent analyses.
+
+### Variant Preprocessing
+
+- The `Preprocess_Variants/` folder contains scripts and notebooks for variant annotation and mutation data integration.
+- `cell_annotate.R` matches IDs used in DepMap to Cellosaurus IDs used in lincs and Tahoe
+- `data/` contains mutation files for our cell lines of interest
+- `merge_variants_into_lincs.ipynb` appends gene-level mutation data to lincs
+- `query_tahoe_...` does the same for tahoe
+- `mutation_data.R` contains some EDA and how we came up with cell_annotate.R
+- We used T2T from UCSC as a reference, in addition to the RefSeq Annotation file - we did not upload these files since they are too large for github.
