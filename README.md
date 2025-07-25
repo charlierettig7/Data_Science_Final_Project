@@ -2,6 +2,7 @@
 **Overview**
 
 *NOTE: All scripts were run on FU's HPC cluster (curta.zedat.fu-berlin.de), and bash scripts contained in this repository are configured for this environment. 
+
 *NOTE: All data from preprocessing must be saved in the "data" directory
 
 **File structure and contents:** 
