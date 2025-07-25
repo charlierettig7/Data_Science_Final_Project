@@ -1,6 +1,5 @@
 # Modeling
 **Overview**
-All data used in training and validation, as well as results from the training and prediction processes have already been obtained and saved in this repository. Thus, any of the scripts can be run with the current contents of this repository without depending on running other scripts first. This is unfortunately not the case for scripts in patient processing and variant processing since some files are too large.
 
 *NOTE: All scripts were run on FU's HPC cluster (curta.zedat.fu-berlin.de), and bash scripts contained in this repository are configured for this environment. 
 
