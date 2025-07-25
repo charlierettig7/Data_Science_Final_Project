@@ -1,4 +1,4 @@
-# DS_Final_Project
+# Data_Science_Final_Project
 Data Science in the Life Sciences - Final Project
 
 Welcome to the final project Group 3 in Data Science in the Life Sciences! This repository contains the entire code base for our project, which we have _unofficially_ named scTherapy+. 
