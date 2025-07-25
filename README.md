@@ -17,6 +17,7 @@ This repository contains all model training and prediction scripts. All data use
     - results_raw: results from raw models (trained without variants data)
     - results_vars: results from models trained with variants data
     - tahoe_predictions: results from prediction on external Tahoe dataset (all models)
+- patient_predictions: contains CSV files with predictions on real patient data using LightGBM
   - src: All Python scripts for training, validating, and saving models, generating and saving evaluation metrics and visualizations, and making predictions.
     - models: contains three sub-directories, each corresponding to a single model framework (LightGBM, linear regression, and XGBoost). Python script names denote whether the model was trained with/without variants data (vars/raw), whether the training data was normalized or not (scaled/""), and whether or not the model was tuned with a hyperparameter grid search. For example, lightGBM/lightGM_vars_scaled_notune.py is the script for the LightGBM model trained on normalized columns with variants data and manual tuning (no grid search, just hand-tuning).
       - lightGBM: all scripts for training different versions of LightGBM
